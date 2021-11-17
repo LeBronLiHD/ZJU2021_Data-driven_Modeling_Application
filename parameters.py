@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-global parameters of the project
+global parameters of the project, fgnb
 """
 
 G_ModelSave = "./model"
