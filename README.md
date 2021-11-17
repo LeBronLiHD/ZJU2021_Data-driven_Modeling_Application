@@ -8,4 +8,3 @@
 |:-----:|:-----:|
 |Week 1|Whole structure of the project|
 |Week 2|Load data and Pre-process|
-#####
