@@ -7,7 +7,6 @@ __pycache__/
 *.so
 
 # 2021-11-16
-data/
 model/
 
 # Distribution / packaging
