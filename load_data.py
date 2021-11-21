@@ -29,8 +29,9 @@ def load_train_data(file_path):
     print("x_train.shape ->", x_train.shape)
     print("y_train.shape ->", y_train.shape)
     print("x_test.shape  ->", x_test.shape)
+    return x_train, y_train, x_test
 
 
 if __name__ == '__main__':
     path = parameters.G_DataPath
-    load_train_data(path)
+    x_train, y_train, x_test = load_train_data(path)

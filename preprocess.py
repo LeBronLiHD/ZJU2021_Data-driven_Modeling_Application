@@ -28,3 +28,26 @@ data pre-process
     3. discretization of continuous data
     4. attribute structure, like BMI
 """
+
+import load_data
+import numpy as np
+import parameters
+
+
+def fill_nan_with_zero(data):
+    count = 0
+    for i in range(len(data)):
+        for j in range(len(data[i])):
+            if np.isnan(data[i][j]):
+                data[i][j] = 0
+                count += 1
+    print("nan count ->", count)
+    return data
+
+
+if __name__ == '__main__':
+    path = parameters.G_DataPath
+    x_train, y_train, x_test = load_data.load_train_data(path)
+    x_train, y_train, x_test = fill_nan_with_zero(x_train), \
+                               fill_nan_with_zero(y_train), \
+                               fill_nan_with_zero(x_test)
