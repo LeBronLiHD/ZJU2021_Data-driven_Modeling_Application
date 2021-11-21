@@ -36,11 +36,17 @@ import parameters
 
 def fill_nan_with_zero(data):
     count = 0
+    shape_len = data.shape.__len__()
     for i in range(len(data)):
-        for j in range(len(data[i])):
-            if np.isnan(data[i][j]):
-                data[i][j] = 0
+        if shape_len == 1:
+            if np.isnan(data[i]):
+                data[i] = 0
                 count += 1
+        else:
+            for j in range(len(data[i])):
+                if np.isnan(data[i][j]):
+                    data[i][j] = 0
+                    count += 1
     print("nan count ->", count)
     return data
 
