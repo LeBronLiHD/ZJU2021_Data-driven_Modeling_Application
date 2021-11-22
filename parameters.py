@@ -15,3 +15,5 @@ G_DataTrainFile = [
     "Btrain_input.txt",
     "Btrain_output.txt"
 ]
+
+G_SampleRatio = 0.025
