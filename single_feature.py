@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.utils import resample
 from scipy import signal
+import pyecharts
 import load_data
 import parameters
 import preprocess
@@ -24,11 +25,11 @@ def resample_data(x_train, y_train):
                      random_state=len(x_train[0]))
     x_train = x_train[index]
     y_train = y_train[index]
-    print("resample done!")
+    print("resample done.")
     return x_train, y_train
 
 
-def single_analysis(x_train, y_train, show_image=True):
+def single_analysis(x_train, y_train, show_image=True, show_corr=True, abs_corr=True):
     if len(x_train) != 0:
         num_feature = len(x_train[0])
     else:
@@ -92,6 +93,34 @@ def single_analysis(x_train, y_train, show_image=True):
                              hist_kws={'edgecolor': 'black'})
             plt.show()
 
+    # visualization of correlation
+    print("correlation ->", correlation[1])
+    correlation_abs = []
+    if abs_corr:
+        for i in range(num_feature):
+            correlation_abs.append(abs(correlation[1][i]))
+    else:
+        correlation_abs = correlation[1]
+    if show_corr:
+        plt.figure(figsize=(10, 6.18))
+        plt.bar(range(len(correlation_abs)),
+                correlation_abs,
+                align='center',
+                edgecolor='purple',
+                linewidth=1.25,
+                width=0.8,
+                color='violet',
+                tick_label=["feature " + str(i + 1) for i in range(len(correlation_abs))])
+        plt.title("correlation value of all 7 features")
+        plt.grid(visible=True,
+                 color='lightgrey',
+                 linestyle='--',
+                 axis='y',
+                 linewidth=1.25)
+        plt.show()
+    print("single_feature analysis done.")
+    return correlation
+
 
 if __name__ == '__main__':
     path = parameters.G_DataPath
@@ -99,4 +128,5 @@ if __name__ == '__main__':
     x_train, y_train, x_test = preprocess.fill_nan_with_zero(x_train), \
                                preprocess.fill_nan_with_zero(y_train), \
                                preprocess.fill_nan_with_zero(x_test)
-    single_analysis(x_train, y_train, show_image=True)
+    correlation = single_analysis(x_train, y_train,
+                                  show_image=True, abs_corr=True)
