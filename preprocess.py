@@ -50,10 +50,93 @@ def fill_nan_with_zero(data):
     print("nan count ->", count)
     return data
 
+def find_nan(data):
+    #找到每一个特征的缺失值坐标
+    count = 0
+    count0 = 0
+    count1 = 0
+    count2 = 0
+    count3 = 0
+    count4 = 0
+    count5 = 0
+    count6 = 0
+    count7 = 0
+    g=np.zeros([7,16], dtype = int)
+    f=np.zeros([80], dtype = int)
+    shape_len = data.shape.__len__()
+    for i in range(len(data)):
+        if shape_len == 1:
+            if np.isnan(data[i]):
+                f[count]=i
+                count += 1
+            
+        else:
+            for j in range(len(data[i])):
+                if np.isnan(data[i][j]):
+                    if j==0:
+                        g[j,count0]=i
+                        count0=count0+1
+                    elif j==1:
+                        g[j,count1]=i
+                        count1=count1+1   
+                    elif j==2:
+                        g[j,count2]=i
+                        count2=count2+1                        
+                    elif j==3:
+                        g[j,count3]=i
+                        count3=count3+1                       
+                    elif j==4:
+                        g[j,count4]=i
+                        count4=count4+1                        
+                    elif j==5:
+                        g[j,count5]=i
+                        count5=count5+1                        
+                    elif j==6:
+                        g[j,count3]=i
+                        count6=count6+1                        
+                    else: 
+                        g[j,count7]=i
+                        count7=count7+1                
+                
+    if shape_len == 1:
+        print("nan count ->", count)
+        return f
+    else:
+        print("nan count1 ->", count1)
+        print("nan count2 ->", count2)
+        print("nan count3 ->", count3)
+        print("nan count4 ->", count4)
+        print("nan count5 ->", count5)
+        print("nan count6 ->", count6)
+        print("nan count7 ->", count7)
+        return g
+
+def data_cleaning(data):
+    import matplotlib.pyplot as plt
+    #进行样条插值
+    import scipy.interpolate as spi
+    plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
+    plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
+
+
+    return data
+
+def pca_data(data):
+    from sklearn.decomposition import PCA
+    pca = PCA()
+    pca.fit(data)
+    PCA(copy=True, n_components=None, whiten=False)
+    print(pca.components_)  # 返回模型的各个特征向量
+    print("*" * 50)
+    print(pca.explained_variance_ratio_)  # 返回各个成分个字的方差百分比
+    return pca.explained_variance_ratio_
+
 
 if __name__ == '__main__':
     path = parameters.G_DataPath
     x_train, y_train, x_test = load_data.load_train_data(path)
+    x_trainnan,  x_testnan = find_nan(x_train),\             
+                                        find_nan(x_test)
     x_train, y_train, x_test = fill_nan_with_zero(x_train), \
                                fill_nan_with_zero(y_train), \
                                fill_nan_with_zero(x_test)
