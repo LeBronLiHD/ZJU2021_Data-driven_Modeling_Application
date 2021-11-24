@@ -115,14 +115,31 @@ def find_nan(data):
         #print(a)
         return g,a
 
+def ployinterp_column(s,i,n):
+    # 自定义插值函数
+    from scipy.interpolate import lagrange
+    k = 10
+    #print(s.shape)
+    # 取前后k个数的索引
+    a=s[i][np.arange(n-k,n)]
+    b=s[i][np.arange(n+1,n+1+k)]
+    #2k个点
+    y=np.hstack((a,b))
+    #y = y[y.notnull()] # 剔除空值
+    #2k个点对应坐标
+    x=np.hstack((np.arange(n-k,n),np.arange(n+1,n+1+k)))
+    # 返回这2k个数据的拉格朗日多项式函数在n的值
+    return lagrange(x,y)(n)
+
 def data_cleaning(data):
-    import matplotlib.pyplot as plt
-    #进行样条插值
-    import scipy.interpolate as spi
-    plt.rcParams['font.sans-serif']=['SimHei'] #用来正常显示中文标签
-    plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
-
-
+    # 过滤数据,将异常值设成None(没写)
+    a, b= find_nan(data)
+    data=np.swapaxes(data,0,1)
+    #判断是否需要插值    
+    for i in  range(len(b)):
+        for j in range(b[i]):
+            data[i,a[i][j]]=ployinterp_column(data,i,a[i][j])
+    data=np.swapaxes(data,0,1)
     return data
 
 def pca_data(data):
@@ -143,3 +160,11 @@ if __name__ == '__main__':
     x_train, y_train, x_test = fill_nan_with_zero(x_train), \
                                fill_nan_with_zero(y_train), \
                                fill_nan_with_zero(x_test)
+    a=np.loadtxt('./data/Btrain_input.txt',dtype=np.float32)
+    b=np.loadtxt('./data/Btrain_output.txt',dtype=np.float32)
+    c=np.loadtxt('./data/Btest_input.txt',dtype=np.float32)
+    a=data_cleaning(a)
+    c=data_cleaning(c)
+    np.savetxt('./data/train_input.txt',a)
+    np.savetxt('./data/test_input.txt',c)
+
