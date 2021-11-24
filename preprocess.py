@@ -62,7 +62,7 @@ def find_nan(data):
     count6 = 0
     count7 = 0
     g=np.zeros([7,16], dtype = int)
-    f=np.zeros([80], dtype = int)
+    f=np.zeros([16], dtype = int)
     shape_len = data.shape.__len__()
     for i in range(len(data)):
         if shape_len == 1:
@@ -92,24 +92,28 @@ def find_nan(data):
                         g[j,count5]=i
                         count5=count5+1                        
                     elif j==6:
-                        g[j,count3]=i
+                        g[j,count6]=i
                         count6=count6+1                        
                     else: 
                         g[j,count7]=i
                         count7=count7+1                
                 
     if shape_len == 1:
-        print("nan count ->", count)
-        return f
+        #print("nan count ->", count)
+        return f,count
     else:
+        '''''
+        print("nan count0 ->", count0)
         print("nan count1 ->", count1)
         print("nan count2 ->", count2)
         print("nan count3 ->", count3)
         print("nan count4 ->", count4)
         print("nan count5 ->", count5)
         print("nan count6 ->", count6)
-        print("nan count7 ->", count7)
-        return g
+        '''
+        a=np.array([count0, count1,count2, count3, count4, count5, count6])
+        #print(a)
+        return g,a
 
 def data_cleaning(data):
     import matplotlib.pyplot as plt
@@ -135,8 +139,7 @@ def pca_data(data):
 if __name__ == '__main__':
     path = parameters.G_DataPath
     x_train, y_train, x_test = load_data.load_train_data(path)
-    x_trainnan,  x_testnan = find_nan(x_train),\             
-                                        find_nan(x_test)
+    x_trainnan,  x_testnan = find_nan(x_train), find_nan(x_test)
     x_train, y_train, x_test = fill_nan_with_zero(x_train), \
                                fill_nan_with_zero(y_train), \
                                fill_nan_with_zero(x_test)
