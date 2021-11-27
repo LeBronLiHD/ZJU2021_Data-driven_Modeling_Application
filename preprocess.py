@@ -115,8 +115,61 @@ def find_nan(data):
         #print(a)
         return g,a
 
+def find_zero(data):
+    #找到每一个特征的零值坐标
+    count = 0
+    count0 = 0
+    count1 = 0
+    count2 = 0
+    count3 = 0
+    count4 = 0
+    count5 = 0
+    count6 = 0
+    count7 = 0
+    g=np.zeros([7,16], dtype = int)
+    f=np.zeros([16], dtype = int)
+    shape_len = data.shape.__len__()
+    for i in range(len(data)):
+        if shape_len == 1:
+            if data[i]==0:
+                f[count]=i
+                count += 1  
+        else:
+            for j in range(len(data[i])):
+                if data[i][j]==0:
+                    if j==0:
+                        g[j,count0]=i
+                        count0=count0+1
+                    elif j==1:
+                        g[j,count1]=i
+                        count1=count1+1   
+                    elif j==2:
+                        g[j,count2]=i
+                        count2=count2+1                        
+                    elif j==3:
+                        g[j,count3]=i
+                        count3=count3+1                       
+                    elif j==4:
+                        g[j,count4]=i
+                        count4=count4+1                        
+                    elif j==5:
+                        g[j,count5]=i
+                        count5=count5+1                        
+                    elif j==6:
+                        g[j,count6]=i
+                        count6=count6+1                        
+                    else: 
+                        g[j,count7]=i
+                        count7=count7+1                
+                
+    if shape_len == 1:
+        return f,count
+    else:
+        a=np.array([count0, count1,count2, count3, count4, count5, count6])
+        return g,a
+
 def ployinterp_column(s,i,n):
-    # 自定义插值函数
+    # 自定义列向量插值函数
     from scipy.interpolate import lagrange
     k = 10
     #print(s.shape)
@@ -131,14 +184,44 @@ def ployinterp_column(s,i,n):
     # 返回这2k个数据的拉格朗日多项式函数在n的值
     return lagrange(x,y)(n)
 
+def ployinterp1_column(s,i,n,k):
+    # 自定义插值函数
+    from scipy.interpolate import lagrange
+    #print(s.shape)
+    # 取后k个数的索引
+    y=s[i][np.arange(n+1,n+1+k)]
+    #k个点对应坐标
+    x=np.arange(n+1,n+1+k)
+    # 返回这2k个数据的拉格朗日多项式函数在n的值
+    return lagrange(x,y)(n)
+
+def ployinterp2_column(s,i,n,k):
+    # 自定义插值函数(针对最后一个值需要插值进行改变)
+    from scipy.interpolate import lagrange
+    #print(s.shape)
+    # 取前k个数的索引
+    y=s[i][np.arange(n-k,n)]
+    #k个点对应坐标
+    x=np.arange(n-k,n)
+    # 返回这2k个数据的拉格朗日多项式函数在n的值
+    return lagrange(x,y)(n)
+
 def data_cleaning(data):
     # 过滤数据,将异常值设成None(没写)
     a, b= find_nan(data)
+    c, d= find_zero(data)
     data=np.swapaxes(data,0,1)
     #判断是否需要插值    
     for i in  range(len(b)):
         for j in range(b[i]):
             data[i,a[i][j]]=ployinterp_column(data,i,a[i][j])
+
+    for i in  range(len(d)):
+        for j in range(d[i]):
+            if i<d[i]/2:
+                data[i,c[i][j]]=ployinterp1_column(data,i,c[i][j],5)
+            else:
+                data[i,c[i][j]]=ployinterp2_column(data,i,c[i][j],5)
     data=np.swapaxes(data,0,1)
     return data
 
