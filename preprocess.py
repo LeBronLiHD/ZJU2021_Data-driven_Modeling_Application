@@ -32,7 +32,21 @@ data pre-process
 import load_data
 import numpy as np
 import parameters
-
+def smaller_than_zero(data):
+    count = 0
+    shape_len = data.shape.__len__()
+    for i in range(len(data)):
+        if shape_len == 1:
+            if data[i]<0:
+                data[i] = data[i-1]+data[i+1]
+                count += 1
+        else:
+            for j in range(len(data[i])):
+                if data[i][j]<0:
+                    data[i][j] = data[i-1][j]+data[i+1][j]
+                    count += 1
+    print("nan count ->", count)
+    return data
 
 def fill_nan_with_zero(data):
     count = 0
@@ -61,8 +75,8 @@ def find_nan(data):
     count5 = 0
     count6 = 0
     count7 = 0
-    g=np.zeros([7,16], dtype = int)
-    f=np.zeros([16], dtype = int)
+    g=np.zeros([7,17], dtype = int)
+    f=np.zeros([17], dtype = int)
     shape_len = data.shape.__len__()
     for i in range(len(data)):
         if shape_len == 1:
@@ -115,7 +129,7 @@ def find_nan(data):
         #print(a)
         return g,a
 
-def find_zero(data):
+def find_strange(data):
     #找到每一个特征的零值坐标
     count = 0
     count0 = 0
@@ -126,17 +140,17 @@ def find_zero(data):
     count5 = 0
     count6 = 0
     count7 = 0
-    g=np.zeros([7,16], dtype = int)
-    f=np.zeros([16], dtype = int)
+    g=np.zeros([7,50], dtype = int)
+    f=np.zeros([50], dtype = int)
     shape_len = data.shape.__len__()
     for i in range(len(data)):
         if shape_len == 1:
-            if data[i]==0:
+            if (data[i]<=0)|(data[i]>=1):
                 f[count]=i
                 count += 1  
         else:
             for j in range(len(data[i])):
-                if data[i][j]==0:
+                if (data[i][j]<=0)|(data[i][j]>=1):
                     if j==0:
                         g[j,count0]=i
                         count0=count0+1
@@ -171,7 +185,7 @@ def find_zero(data):
 def ployinterp_column(s,i,n):
     # 自定义列向量插值函数
     from scipy.interpolate import lagrange
-    k = 10
+    k = 3
     #print(s.shape)
     # 取前后k个数的索引
     a=s[i][np.arange(n-k,n)]
@@ -209,7 +223,7 @@ def ployinterp2_column(s,i,n,k):
 def data_cleaning(data):
     # 过滤数据,将异常值设成None(没写)
     a, b= find_nan(data)
-    c, d= find_zero(data)
+    c, d= find_strange(data)
     data=np.swapaxes(data,0,1)
     #判断是否需要插值    
     for i in  range(len(b)):
@@ -218,8 +232,10 @@ def data_cleaning(data):
 
     for i in  range(len(d)):
         for j in range(d[i]):
-            if i<d[i]/2:
+            if i<1:
                 data[i,c[i][j]]=ployinterp1_column(data,i,c[i][j],5)
+            elif i<d[i]-5:
+                data[i,c[i][j]]=ployinterp_column(data,i,c[i][j])
             else:
                 data[i,c[i][j]]=ployinterp2_column(data,i,c[i][j],5)
     data=np.swapaxes(data,0,1)
