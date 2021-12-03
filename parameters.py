@@ -8,12 +8,12 @@ G_ModelSave = "./model"
 G_DataPath = "./data"
 
 G_DataTestFile = [
-    "Btest_input.txt"
+    "test_modify.txt"
 ]
 
 G_DataTrainFile = [
-    "Btrain_input.txt",
-    "Btrain_output.txt"
+    "train_modify.txt",
+    "output.txt"
 ]
 
 G_SampleRatio = 0.025
