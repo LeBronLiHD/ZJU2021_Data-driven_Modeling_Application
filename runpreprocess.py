@@ -14,6 +14,6 @@ a=preprocess.smaller_than_zero(a)
 c=preprocess.smaller_than_zero(c)
 np.savetxt('./data/train_input.txt',a)
 np.savetxt('./data/test_input.txt',c)
-
+preprocess.modifydata()
 #fill_nan_with_zero(a)
 #pca_data(a)

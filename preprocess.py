@@ -37,7 +37,7 @@ def smaller_than_zero(data):
     shape_len = data.shape.__len__()
     for i in range(len(data)):
         if shape_len == 1:
-            if data[i]<0:
+            if data[i]<=0:
                 data[i] = data[i-1]+data[i+1]
                 count += 1
         else:
@@ -47,6 +47,7 @@ def smaller_than_zero(data):
                     count += 1
     print("nan count ->", count)
     return data
+
 
 def fill_nan_with_zero(data):
     count = 0
@@ -239,6 +240,7 @@ def data_cleaning(data):
             else:
                 data[i,c[i][j]]=ployinterp2_column(data,i,c[i][j],5)
     data=np.swapaxes(data,0,1)
+    find_strange(data)
     return data
 
 def pca_data(data):
@@ -250,7 +252,46 @@ def pca_data(data):
     print("*" * 50)
     print(pca.explained_variance_ratio_)  # 返回各个成分个字的方差百分比
     return pca.explained_variance_ratio_
-
+def modifytraindata():
+    # tn-2,tn-1,tn
+    import preprocess
+    import numpy as np
+    a=np.loadtxt('./data/train_input.txt',dtype=np.float32)
+    #data2删去前两行
+    data1=np.delete(a, 0, axis = 0)
+    data2=np.delete(data1, 0, axis = 0)
+    #data3删去第一行和最后一行
+    data3=np.delete(data1, len(data1)-1, axis = 0)
+    #data4删去最后两行
+    data4=np.delete(a, len(a)-1, axis = 0)
+    data4=np.delete(data4, len(data4)-1, axis = 0)
+    #按照data4、data3、data2排列
+    data=np.concatenate((data4,data3),axis=1)
+    data=np.concatenate((data,data2),axis=1)
+    np.savetxt('./data/train_modify.txt',data)
+    
+def modifytestdata():
+    import numpy as np
+    a=np.loadtxt('./data/train_input.txt',dtype=np.float32)
+    data1=a[1594:,:]
+    print(data1.shape)
+    b=np.loadtxt('./data/test_input.txt',dtype=np.float32)
+    data0=np.concatenate((data1,b),axis=0)
+    data1=np.delete(data0, len(data0)-1, axis = 0)
+    data1=np.delete(data1, len(data1)-1, axis = 0)
+    data2=np.delete(data0, len(data0)-1, axis = 0)
+    data2=np.delete(data2, 0, axis = 0)
+    data3=np.delete(data0, [0,1], axis = 0)
+    data=np.concatenate((data1,data2,data3),axis=1)
+    np.savetxt('./data/test_modify.txt',data)
+def modifyoutput():
+    a=np.loadtxt('./data/output.txt',dtype=np.float32)
+    a=np.delete(a, [0,1], axis = 0)
+    np.savetxt('./data/output_modify.txt',a)
+def modifydata():
+    modifytraindata()
+    modifytestdata()
+    modifyoutput()
 
 if __name__ == '__main__':
     path = parameters.G_DataPath
