@@ -42,12 +42,12 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(512))
-    # model.add(Activation('relu'))
-    # model.add(Dropout(dropout_param))
-    # model.add(Dense(1024))
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(512))
+    model.add(Dense(1024))
+    model.add(Activation('relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(1024))
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(512))
@@ -62,14 +62,12 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.add(Dense(1, activation='linear'))
     plot_model(model, show_shapes=True)
 
-    model.compile(optimizer='sgd',
+    model.compile(optimizer='adam',
                   loss=tf.keras.losses.MeanSquaredError(),
                   metrics=[tf.keras.metrics.MeanSquaredError()])
-    early_stopping = EarlyStopping(monitor='val_mean_squared_error', min_delta=0.001, patience=10, mode='min')
     history = model.fit(x_train, y_train,
                         validation_split=0.2,
                         epochs=parameters.G_EpochNum,
-                        callbacks=[early_stopping],
                         batch_size=64,
                         shuffle=True)
 
@@ -96,7 +94,7 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.save(model_path)
     print("model saved at", model_path)
 
-    return model
+    return model, model_path
 
 
 if __name__ == '__main__':
@@ -107,6 +105,5 @@ if __name__ == '__main__':
     # x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
-    model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
-    model_path = "../model/model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
+    model, model_path = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
     model_validation.model_validation(model, x_train, y_train, model_or_path=True)

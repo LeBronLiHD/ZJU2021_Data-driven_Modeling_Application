@@ -8,6 +8,7 @@ G_ModelSave = "./model"
 G_DataPath = "./data"
 
 G_DataPath_Sub = "../data"
+G_ModelSave_Sub = "../model"
 
 G_DataTestFile = [
     "test_modify.txt"
@@ -21,4 +22,4 @@ G_DataTrainFile = [
 G_SampleRatio = 1/16
 G_NumOfFeature = 21
 G_DeletionOf_Y = 2
-G_EpochNum = 50
+G_EpochNum = 100
