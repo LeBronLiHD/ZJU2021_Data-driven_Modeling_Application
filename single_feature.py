@@ -41,7 +41,7 @@ def single_analysis(x_train, y_train, show_image=True, show_corr=True, abs_corr=
     x_train_t = x_train.T
 
     for i in range(num_feature):
-        print("X(feature) index ->", i, "/ 6")
+        print("X(feature) index ->", i + 1, "/ 31")
         correlation[0].append(i)
         correlation[1].append(calculation.get_correlation(x_train_t[i], y_train))
         if show_image:

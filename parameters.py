@@ -17,3 +17,4 @@ G_DataTrainFile = [
 ]
 
 G_SampleRatio = 0.025
+G_NumOfFeature = 21

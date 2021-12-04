@@ -49,6 +49,24 @@ def smaller_than_zero(data):
     return data
 
 
+def expand_shape(data, expand=False):
+    # expand = False: (21, ) -> (21, 21)
+    # expand = True:  (21, ) -> (42, 42)
+    exp_data = []
+    if expand:
+        for i in range(parameters.G_NumOfFeature):
+            exp_data.append(data)
+    return expand
+
+
+def transfer_x_y(x_train):
+    print("x_train.shape ->", np.shape(x_train))
+    exp_x_train = []
+    for i in range(len(x_train)):
+        exp_x_train.append(expand_shape(x_train[i], expand=False))
+    return exp_x_train
+
+
 def fill_nan_with_zero(data):
     count = 0
     shape_len = data.shape.__len__()
