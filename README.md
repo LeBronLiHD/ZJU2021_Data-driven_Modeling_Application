@@ -8,3 +8,6 @@
 |:-----:|:-----:|
 |Week 1|Whole structure of the project|
 |Week 2|Load data and Pre-process|
+|Week 3|Simple-model|
+|Week 4|Advances-model|
+|Week 5|Middle achievement|
