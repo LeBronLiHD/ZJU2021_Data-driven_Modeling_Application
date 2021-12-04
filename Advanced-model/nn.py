@@ -24,5 +24,7 @@ from sklearn.metrics import roc_auc_score, roc_curve
 
 
 if __name__ == '__main__':
-    path = parameters.G_DataPath
+    path = parameters.G_DataPath_Sub
     x_train, y_train, x_test = load_data.load_train_data(path)
+    x_train = preprocess.transfer_x_y(x_train)
+    x_test = preprocess.transfer_x_y(x_test)

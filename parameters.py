@@ -7,6 +7,8 @@ global parameters of the project, lkjnb!!!!
 G_ModelSave = "./model"
 G_DataPath = "./data"
 
+G_DataPath_Sub = "../data"
+
 G_DataTestFile = [
     "test_modify.txt"
 ]
