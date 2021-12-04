@@ -27,6 +27,7 @@ def load_train_data(file_path):
                        np.loadtxt(train_data[1], dtype=np.float32)
     x_test = np.loadtxt(test_data[0], dtype=np.float32)
     print("x_train.shape ->", x_train.shape)
+    y_train = y_train[parameters.G_DeletionOf_Y:len(y_train)]
     print("y_train.shape ->", y_train.shape)
     print("x_test.shape  ->", x_test.shape)
     return x_train, y_train, x_test
