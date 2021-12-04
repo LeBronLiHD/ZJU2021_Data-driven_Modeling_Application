@@ -18,6 +18,7 @@ G_DataTrainFile = [
     "output.txt"
 ]
 
-G_SampleRatio = 0.025
+G_SampleRatio = 1/16
 G_NumOfFeature = 21
 G_DeletionOf_Y = 2
+G_EpochNum = 50

@@ -49,22 +49,32 @@ def smaller_than_zero(data):
     return data
 
 
-def expand_shape(data, expand=False):
+def expand_shape(data, expand=False, shuffle=False):
     # expand = False: (21, ) -> (21, 21)
     # expand = True:  (21, ) -> (42, 42)
     exp_data = []
-    if expand:
+    if expand == False:
         for i in range(parameters.G_NumOfFeature):
-            exp_data.append(data)
-    return expand
+            row = []
+            for j in range(parameters.G_NumOfFeature):
+                row.append(data[j])
+            row = np.array(row)
+            exp_data.append(row)
+    else:
+        for i in range(parameters.G_NumOfFeature * 2):
+            row = []
+            for j in range(parameters.G_NumOfFeature * 2):
+                row.append(data[int(j/2)])
+            row = np.array(row)
+            exp_data.append(row)
+    return np.array(exp_data)
 
 
 def transfer_x_y(x_train):
-    print("x_train.shape ->", np.shape(x_train))
     exp_x_train = []
     for i in range(len(x_train)):
-        exp_x_train.append(expand_shape(x_train[i], expand=False))
-    return exp_x_train
+        exp_x_train.append(expand_shape(x_train[i], expand=True, shuffle=False))
+    return np.array(exp_x_train)
 
 
 def fill_nan_with_zero(data):
