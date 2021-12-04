@@ -32,6 +32,9 @@ data pre-process
 import load_data
 import numpy as np
 import parameters
+import matplotlib.pyplot as plt
+
+
 def smaller_than_zero(data):
     count = 0
     shape_len = data.shape.__len__()
@@ -70,10 +73,29 @@ def expand_shape(data, expand=False, shuffle=False):
     return np.array(exp_data)
 
 
+def transfer_to_image(data):
+    for_show = []
+    for k in range(np.shape(data)[0]):
+        for_show_unit = []
+        for j in range(np.shape(data)[1]):
+            for_show_unit.append(data[k][j][0])
+        for_show.append(for_show_unit)
+    return for_show
+
+
+def let_me_see_see(image):
+    plt.figure()
+    # for_show = transfer_to_image(image)
+    plt.imshow(image)
+    plt.ylabel("let_me_see_see")
+    plt.show()
+
+
 def transfer_x_y(x_train):
     exp_x_train = []
     for i in range(len(x_train)):
         exp_x_train.append(expand_shape(x_train[i], expand=True, shuffle=False))
+    let_me_see_see(exp_x_train[0])
     return np.array(exp_x_train)
 
 

@@ -42,12 +42,12 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(512))
-    # model.add(Activation('relu'))
-    # model.add(Dropout(dropout_param))
-    # model.add(Dense(1024))
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(512))
+    model.add(Dense(1024))
+    model.add(Activation('relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(1024))
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(512))
@@ -65,11 +65,11 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.compile(optimizer='sgd',
                   loss=tf.keras.losses.MeanSquaredError(),
                   metrics=[tf.keras.metrics.MeanSquaredError()])
-    early_stopping = EarlyStopping(monitor='val_mean_squared_error', min_delta=0.001, patience=10, mode='min')
+    early_stopping = EarlyStopping(monitor='val_mean_squared_error', min_delta=0.000001, patience=25, mode='min')
     history = model.fit(x_train, y_train,
                         validation_split=0.2,
                         epochs=parameters.G_EpochNum,
-                        callbacks=[early_stopping],
+                        # callbacks=[early_stopping],
                         batch_size=64,
                         shuffle=True)
 
