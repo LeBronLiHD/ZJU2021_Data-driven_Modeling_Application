@@ -28,24 +28,32 @@ sys.dont_write_bytecode = True
 matplotlib.use('TkAgg')
 
 
-def Train_NN_Model(x_train, y_train, width, height):
+def Train_CNN_Model(x_train, y_train, width, height):
     print("width  ->", width)
     print("height ->", height)
+    print("x_train.type  ->", type(x_train))
+    print("y_train.type  ->", type(y_train))
+    print("x_train.shape ->", x_train.shape)
+    print("y_train.shape ->", y_train.shape)
 
     # building a linear stack of layers with the sequential model
-    dropout_param = 0.1
+    dropout_param = 0.2
     model = Sequential()
-    model.add(Dense(128))
-    model.add(Activation('relu'))
+    model.add(Conv2D(filters=32,
+                     kernel_size=(2, 2),
+                     padding='same',
+                     data_format='channels_last',
+                     input_shape=(width, height, 1),
+                     activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(256, input_shape=(width, height)))
-    model.add(Activation('relu'))
-    model.add(Dropout(dropout_param))
-    model.add(Dense(512))
-    model.add(Activation('relu'))
-    model.add(Dropout(dropout_param))
-    model.add(Dense(1024))
-    model.add(Activation('relu'))
+    model.add(Conv2D(filters=32,
+                     kernel_size=(2, 2),
+                     padding='same',
+                     data_format='channels_last',
+                     input_shape=(width, height, 1),
+                     activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Flatten())
     model.add(Dropout(dropout_param))
     model.add(Dense(1024))
     model.add(Activation('relu'))
@@ -60,14 +68,15 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(1, activation='linear'))
-    plot_model(model, show_shapes=True)
 
-    model.compile(optimizer='adam',
+    model.compile(optimizer='sgd',
                   loss=tf.keras.losses.MeanSquaredError(),
                   metrics=[tf.keras.metrics.MeanSquaredError()])
+    early_stopping = EarlyStopping(monitor='val_mean_squared_error', min_delta=0.000001, patience=25, mode='min')
     history = model.fit(x_train, y_train,
                         validation_split=0.2,
                         epochs=parameters.G_EpochNum,
+                        # callbacks=[early_stopping],
                         batch_size=64,
                         shuffle=True)
 
@@ -89,12 +98,12 @@ def Train_NN_Model(x_train, y_train, width, height):
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
 
-    model_name = "model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
+    model_name = "model_cnn_" + str(parameters.G_EpochNum) + ".h5"
     model_path = os.path.join(parameters.G_ModelSave_Sub, model_name)
     model.save(model_path)
     print("model saved at", model_path)
 
-    return model, model_path
+    return model
 
 
 if __name__ == '__main__':
@@ -102,8 +111,10 @@ if __name__ == '__main__':
     x_train, y_train, x_test = load_data.load_train_data(path)
     x_train = preprocess.transfer_x_y(x_train)
     x_test = preprocess.transfer_x_y(x_test)
-    # x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
+    x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
+    # y_train = tf.expand_dims(y_train, -1)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
-    model, model_path = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
-    model_validation.model_validation(model, x_train, y_train, model_or_path=True)
+    # model = Train_CNN_Model(np.array(x_train), np.array(y_train), x_train.shape[1], x_train.shape[2])
+    model = "../model/model_cnn_" + str(parameters.G_EpochNum) + ".h5"
+    model_validation.model_validation_cnn(model, x_train, y_train, model_or_path=False)

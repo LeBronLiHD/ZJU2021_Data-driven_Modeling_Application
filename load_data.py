@@ -30,6 +30,7 @@ def load_train_data(file_path):
     y_train = y_train[parameters.G_DeletionOf_Y:len(y_train)]
     print("y_train.shape ->", y_train.shape)
     print("x_test.shape  ->", x_test.shape)
+    # @TODO load data preprocess in random forest
     return x_train, y_train, x_test
 
 

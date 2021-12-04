@@ -36,31 +36,27 @@ def Train_NN_Model(x_train, y_train, width, height):
     dropout_param = 0.1
     model = Sequential()
     model.add(Dense(128))
-    model.add(Activation('relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(256, input_shape=(width, height)))
-    model.add(Activation('relu'))
+    model.add(Dense(256, input_shape=(width, height),
+                    kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(512))
-    model.add(Activation('relu'))
+    model.add(Dense(512, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(1024))
-    model.add(Activation('relu'))
+    model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(1024))
-    model.add(Activation('relu'))
+    model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(512))
-    model.add(Activation('relu'))
+    model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(256))
-    model.add(Activation('relu'))
+    model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(128))
-    model.add(Activation('relu'))
+    model.add(Dense(512, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(1, activation='linear'))
-    plot_model(model, show_shapes=True)
+    model.add(Dense(256, kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(128, kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(1, kernel_initializer='normal', activation='linear'))
 
     model.compile(optimizer='sgd',
                   loss=tf.keras.losses.MeanSquaredError(),
@@ -70,7 +66,7 @@ def Train_NN_Model(x_train, y_train, width, height):
                         validation_split=0.2,
                         epochs=parameters.G_EpochNum,
                         # callbacks=[early_stopping],
-                        batch_size=64,
+                        batch_size=32,
                         shuffle=True)
 
     print(model.summary())
@@ -102,11 +98,11 @@ def Train_NN_Model(x_train, y_train, width, height):
 if __name__ == '__main__':
     path = parameters.G_DataPath_Sub
     x_train, y_train, x_test = load_data.load_train_data(path)
-    x_train = preprocess.transfer_x_y(x_train)
-    x_test = preprocess.transfer_x_y(x_test)
+    x_train = preprocess.transfer_x_y(x_train, show_image=False)
+    x_test = preprocess.transfer_x_y(x_test, show_image=True)
     # x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
     model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
-    model_path = "../model/model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
+    # model_path = "../model/model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
     model_validation.model_validation(model, x_train, y_train, model_or_path=True)

@@ -91,11 +91,12 @@ def let_me_see_see(image):
     plt.show()
 
 
-def transfer_x_y(x_train):
+def transfer_x_y(x_train, show_image=False):
     exp_x_train = []
     for i in range(len(x_train)):
         exp_x_train.append(expand_shape(x_train[i], expand=True, shuffle=False))
-    let_me_see_see(exp_x_train[0])
+    if show_image:
+        let_me_see_see(exp_x_train[0])
     return np.array(exp_x_train)
 
 
