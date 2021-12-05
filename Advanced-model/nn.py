@@ -44,7 +44,13 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.add(Dropout(dropout_param))
     model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
-    model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
+    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
@@ -61,11 +67,11 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.compile(optimizer='sgd',
                   loss=tf.keras.losses.MeanSquaredError(),
                   metrics=[tf.keras.metrics.MeanSquaredError()])
-    early_stopping = EarlyStopping(monitor='val_mean_squared_error', min_delta=0.000001, patience=25, mode='min')
+    early_stopping = EarlyStopping(monitor='val_loss', min_delta=0.000001, patience=5, mode='min')
     history = model.fit(x_train, y_train,
                         validation_split=0.2,
                         epochs=parameters.G_EpochNum,
-                        # callbacks=[early_stopping],
+                        callbacks=[early_stopping],
                         batch_size=32,
                         shuffle=True)
 

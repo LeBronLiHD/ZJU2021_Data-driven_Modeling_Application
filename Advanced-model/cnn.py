@@ -115,6 +115,6 @@ if __name__ == '__main__':
     # y_train = tf.expand_dims(y_train, -1)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
-    # model = Train_CNN_Model(np.array(x_train), np.array(y_train), x_train.shape[1], x_train.shape[2])
-    model = "../model/model_cnn_" + str(parameters.G_EpochNum) + ".h5"
-    model_validation.model_validation_cnn(model, x_train, y_train, model_or_path=False)
+    model = Train_CNN_Model(np.array(x_train), np.array(y_train), x_train.shape[1], x_train.shape[2])
+    # model = "../model/model_cnn_" + str(parameters.G_EpochNum) + ".h5"
+    model_validation.model_validation_cnn(model, x_train, y_train, model_or_path=True)
