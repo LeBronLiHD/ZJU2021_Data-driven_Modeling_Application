@@ -34,6 +34,20 @@ def transfer_data(x_train, y_train):
         "5": x_train.T[4],
         "6": x_train.T[5],
         "7": x_train.T[6],
+        "8": x_train.T[7],
+        "9": x_train.T[8],
+        "10": x_train.T[9],
+        "11": x_train.T[10],
+        "12": x_train.T[11],
+        "13": x_train.T[12],
+        "14": x_train.T[13],
+        "15": x_train.T[14],
+        "16": x_train.T[15],
+        "17": x_train.T[16],
+        "18": x_train.T[17],
+        "19": x_train.T[18],
+        "20": x_train.T[19],
+        "21": x_train.T[20],
         "y": y_train
     }
     data_plot = pandas.DataFrame(data_plot)

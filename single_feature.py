@@ -111,7 +111,7 @@ def single_analysis(x_train, y_train, show_image=True, show_corr=True, abs_corr=
                 width=0.8,
                 color='violet',
                 tick_label=["feature " + str(i + 1) for i in range(len(correlation_abs))])
-        plt.title("correlation value of all 7 features")
+        plt.title("correlation value of all 21 features")
         plt.grid(visible=True,
                  color='lightgrey',
                  linestyle='--',
