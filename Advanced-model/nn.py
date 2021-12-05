@@ -33,20 +33,16 @@ def Train_NN_Model(x_train, y_train, width, height):
     print("height ->", height)
 
     # building a linear stack of layers with the sequential model
-    dropout_param = 0.1
+    dropout_param = 0.2
     model = Sequential()
-    model.add(Dense(128))
-    model.add(Dropout(dropout_param))
-    model.add(Dense(256, input_shape=(width, height),
+    model.add(Dense(128, input_shape=(width, height),
                     kernel_initializer='normal', activation='relu'))
+    model.add(Dropout(dropout_param))
+    model.add(Dense(256, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(512, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(1024, kernel_initializer='normal', activation='relu'))
-    model.add(Dropout(dropout_param))
-    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
-    model.add(Dropout(dropout_param))
-    model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
     model.add(Dense(2048, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
@@ -62,12 +58,14 @@ def Train_NN_Model(x_train, y_train, width, height):
     model.add(Dropout(dropout_param))
     model.add(Dense(128, kernel_initializer='normal', activation='relu'))
     model.add(Dropout(dropout_param))
+    # model.add(Dense(32, kernel_initializer='normal', activation='relu'))
+    # model.add(Dropout(dropout_param))
     model.add(Dense(1, kernel_initializer='normal', activation='linear'))
 
     model.compile(optimizer='sgd',
                   loss=tf.keras.losses.MeanSquaredError(),
                   metrics=[tf.keras.metrics.MeanSquaredError()])
-    early_stopping = EarlyStopping(monitor='val_loss', min_delta=0.000001, patience=5, mode='min')
+    early_stopping = EarlyStopping(monitor='val_loss', min_delta=0.0001, patience=4, mode='min')
     history = model.fit(x_train, y_train,
                         validation_split=0.2,
                         epochs=parameters.G_EpochNum,
@@ -109,6 +107,6 @@ if __name__ == '__main__':
     # x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
-    model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
-    # model_path = "../model/model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
-    model_validation.model_validation(model, x_train, y_train, model_or_path=True)
+    # model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
+    model = "../model/model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
+    model_validation.model_validation(model, x_train, y_train, model_or_path=False)
