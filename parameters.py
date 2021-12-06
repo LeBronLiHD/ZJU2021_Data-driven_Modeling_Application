@@ -18,6 +18,10 @@ G_DataTrainFile = [
     "train_modify.txt",
     "output.txt"
 ]
+G_ForestData = [
+    "train_modify.csv",
+    "test_modify.csv"
+]
 
 G_SampleRatio = 1/16
 G_NumOfFeature = 21

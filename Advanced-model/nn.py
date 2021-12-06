@@ -91,7 +91,7 @@ def Train_NN_Model(x_train, y_train, width, height):
     plt.legend(['Train', 'Test'], loc='upper left')
     plt.show()
 
-    model_name = "model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
+    model_name = "model_simple_forest_nn_" + str(parameters.G_EpochNum) + ".h5"
     model_path = os.path.join(parameters.G_ModelSave_Sub, model_name)
     model.save(model_path)
     print("model saved at", model_path)
@@ -101,12 +101,12 @@ def Train_NN_Model(x_train, y_train, width, height):
 
 if __name__ == '__main__':
     path = parameters.G_DataPath_Sub
-    x_train, y_train, x_test = load_data.load_train_data(path)
+    x_train, y_train, x_test = load_data.load_train_data(path, forest=True)
     x_train = preprocess.transfer_x_y(x_train, show_image=False)
     x_test = preprocess.transfer_x_y(x_test, show_image=True)
     # x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
-    # model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
-    model = "../model/model_simple_nn_" + str(parameters.G_EpochNum) + ".h5"
+    model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
+    # model = "../model/model_simple_forest_nn_" + str(parameters.G_EpochNum) + ".h5"
     model_validation.model_validation(model, x_train, y_train, model_or_path=False)

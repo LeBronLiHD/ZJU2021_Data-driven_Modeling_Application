@@ -11,14 +11,31 @@ import parameters
 from keras.models import load_model
 import matplotlib.pyplot as plt
 from keras import backend as K
+from sklearn import metrics
 
 # @TODO: def model_evaluate(model, data_x, data_y)
+
+
+"""
+from sklearn import metrics
+data_pre = model.predict(X_test)
+MSE = metrics.mean_squared_error(Y_test, data_pre)
+print(MSE)
+RMSE = metrics.mean_squared_error(Y_test, data_pre)**0.5
+print(RMSE)
+"""
+
+
+def root_mean_squared_error_fgnb(y_true, y_pred):
+    return metrics.mean_squared_error(y_true, y_pred) ** 0.5
 
 
 def root_mean_squared_error(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true)))
 
-def model_validation(model_or_model_path, x_train, y_train, model_or_path=True, ratio=parameters.G_SampleRatio):
+
+def model_validation(model_or_model_path, x_train, y_train,
+                     model_or_path=True, matrix=True, ratio=parameters.G_SampleRatio):
     if model_or_path:
         model = model_or_model_path
     else:
