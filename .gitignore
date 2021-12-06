@@ -11,6 +11,7 @@ model/
 
 # 2021-12-4
 .idea/
+.dist/
 
 # Distribution / packaging
 .Python
