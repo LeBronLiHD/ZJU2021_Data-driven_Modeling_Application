@@ -28,6 +28,7 @@ def load_train_data(file_path, forest=False):
         forest_train, forest_test = np.loadtxt(forest_data[0], dtype=np.float32), \
                                     np.loadtxt(forest_data[1], dtype=np.float32)
         print("x_train.shape ->", np.array(forest_train).shape)
+        y_train = y_train[parameters.G_DeletionOf_Y:len(y_train)]
         print("y_train.shape ->", y_train.shape)
         print("x_test.shape  ->", np.array(forest_test).shape)
         return np.array(forest_train), y_train, np.array(forest_test)

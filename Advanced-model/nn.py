@@ -109,4 +109,4 @@ if __name__ == '__main__':
     print("exp_x_test.shape  ->", x_test.shape)
     model = Train_NN_Model(x_train, y_train, x_train.shape[1], x_train.shape[2])
     # model = "../model/model_simple_forest_nn_" + str(parameters.G_EpochNum) + ".h5"
-    model_validation.model_validation(model, x_train, y_train, model_or_path=False)
+    model_validation.model_validation(model, x_train, y_train, model_or_path=True)
