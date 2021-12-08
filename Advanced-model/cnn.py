@@ -108,13 +108,13 @@ def Train_CNN_Model(x_train, y_train, width, height):
 
 if __name__ == '__main__':
     path = parameters.G_DataPath_Sub
-    x_train, y_train, x_test = load_data.load_train_data(path, forest=True)
+    x_train, y_train, x_test = load_data.load_train_data(path, forest=False)
     x_train = preprocess.transfer_x_y(x_train)
     x_test = preprocess.transfer_x_y(x_test)
     x_train, x_test = tf.expand_dims(x_train, 3), tf.expand_dims(x_test, 3)
     # y_train = tf.expand_dims(y_train, -1)
     print("exp_x_train.shape ->", x_train.shape)
     print("exp_x_test.shape  ->", x_test.shape)
-    model = Train_CNN_Model(np.array(x_train), np.array(y_train), x_train.shape[1], x_train.shape[2])
-    # model = "../model/model_forest_cnn_" + str(parameters.G_EpochNum) + ".h5"
-    model_validation.model_validation_cnn(model, x_train, y_train, model_or_path=True)
+    # model = Train_CNN_Model(np.array(x_train), np.array(y_train), x_train.shape[1], x_train.shape[2])
+    model = "../model/model_forest_cnn_" + str(parameters.G_EpochNum) + ".h5"
+    model_validation.model_validation_cnn(model, x_train, y_train, x_test, model_or_path=False)

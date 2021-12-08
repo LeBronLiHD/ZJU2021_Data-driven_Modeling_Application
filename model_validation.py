@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 from keras import backend as K
 from sklearn import metrics
 
+import pandas as pd
+
 # @TODO: def model_evaluate(model, data_x, data_y)
 
 
@@ -34,7 +36,13 @@ def root_mean_squared_error(y_true, y_pred):
     return K.sqrt(K.mean(K.square(y_pred - y_true)))
 
 
-def model_validation(model_or_model_path, x_train, y_train,
+def save_csv(y_test, name):
+    y_test = pd.DataFrame(y_test)
+    y_test.index = np.linspace(1, 798, 798)
+    y_test.to_csv("test_" + name + ".csv")
+
+
+def model_validation(model_or_model_path, x_train, y_train, x_test,
                      model_or_path=True, matrix=True, ratio=parameters.G_SampleRatio):
     if model_or_path:
         model = model_or_model_path
@@ -46,7 +54,7 @@ def model_validation(model_or_model_path, x_train, y_train,
     for i in range(len(predict_ori)):
         predict.append(float(predict_ori[i][0]))
     mean_pred = np.mean(predict)
-    print("mean od prediction is ->", mean_pred)
+    print("mean of prediction is ->", mean_pred)
     K = [i for i in range(101)]
     R = []
     predict_search = [0 for i in range(len(x_train))]
@@ -59,7 +67,7 @@ def model_validation(model_or_model_path, x_train, y_train,
         tensor = root_mean_squared_error(y_train, predict_search)
         tensor = float(tensor)
         R.append(tensor)
-    print("min RMSE is ->", R[np.argmin(R)])
+    print("min RMSE is ->", R[np.argmin(R)], "  => best_k ->", K[np.argmin(R)])
     best_k = K[np.argmin(R)]
     for i in range(len(x_train)):
         predict[i] = (predict[i] - mean_pred) * best_k + mean_pred
@@ -82,9 +90,16 @@ def model_validation(model_or_model_path, x_train, y_train,
     print("RMSE  =", root_mean_squared_error(y_train, predict))
     score = model.evaluate(np.array(x_train), np.array(y_train))
     print("score =", score[0])
+    commit_ori = model.predict(x_test)
+    commit = []
+    for i in range(len(commit_ori)):
+        commit.append(float(commit_ori[i][0]))
+    for i in range(len(x_test)):
+        commit[i] = (commit[i] - np.mean(commit)) * best_k + np.mean(commit)
+    save_csv(commit, "dnn")
 
 
-def model_validation_cnn(model_or_model_path, x_train, y_train, model_or_path=True, ratio=parameters.G_SampleRatio):
+def model_validation_cnn(model_or_model_path, x_train, y_train, x_test, model_or_path=True, ratio=parameters.G_SampleRatio):
     if model_or_path:
         model = model_or_model_path
     else:
@@ -92,6 +107,27 @@ def model_validation_cnn(model_or_model_path, x_train, y_train, model_or_path=Tr
     predict = model.predict(x_train)
     predict = np.array(predict)
     print("prediction of cnn done")
+
+    # mean_pred = np.mean(predict)
+    # print("mean of prediction is ->", mean_pred)
+    # K = [i for i in range(101)]
+    # R = []
+    # predict_search = [0 for i in range(len(x_train))]
+    # for _ in range(len(K)):
+    #     if _ % 10 == 0:
+    #         print("Tuneing ... i =", _)
+    #     for i in range(len(x_train)):
+    #         predict_search[i] = (predict[i] - mean_pred) * K[_] + mean_pred
+    #     predict_search = np.array(predict_search)
+    #     tensor = root_mean_squared_error(y_train, predict_search)
+    #     tensor = float(tensor)
+    #     R.append(tensor)
+    # print("min RMSE is ->", R[np.argmin(R)])
+    # best_k = K[np.argmin(R)]
+    # for i in range(len(x_train)):
+    #     predict[i] = (predict[i] - mean_pred) * best_k + mean_pred
+    # predict = np.array(predict)
+
     predict_show, y_train_show, x_train_show = [], [], []
     for i in range(len(x_train)):
         # if i % select_cube == 0:
@@ -118,3 +154,5 @@ def model_validation_cnn(model_or_model_path, x_train, y_train, model_or_path=Tr
     print("RMSE  =", root_mean_squared_error(y_train, predict))
     score = model.evaluate(np.array(x_train_show), np.array(y_train_show))
     print("score =", score[0])
+    commit = model.predict(x_test)
+    save_csv(commit, "cnn")
