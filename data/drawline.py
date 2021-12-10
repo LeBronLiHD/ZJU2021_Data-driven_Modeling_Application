@@ -1,8 +1,7 @@
-from pandas import read_csv
 from matplotlib import pyplot
 import numpy as np
-a=np.loadtxt('Btrain_input.txt',dtype=np.float32)
-b=np.loadtxt('output.txt',dtype=np.float32)
+a=np.loadtxt('train_input.csv',dtype=np.float32)
+b=np.loadtxt('output.csv',dtype=np.float32)
 print(a.shape)
 print(b.shape)
 k=0
