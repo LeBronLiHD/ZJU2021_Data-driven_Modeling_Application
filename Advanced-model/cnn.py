@@ -45,6 +45,23 @@ def Train_CNN_Model(x_train, y_train, width, height):
                      data_format='channels_last',
                      input_shape=(width, height, 1),
                      activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Dropout(dropout_param))
+    model.add(Conv2D(filters=32,
+                     kernel_size=(2, 2),
+                     padding='same',
+                     data_format='channels_last',
+                     input_shape=(width, height, 1),
+                     activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Flatten())
+    model.add(Conv2D(filters=32,
+                     kernel_size=(2, 2),
+                     padding='same',
+                     data_format='channels_last',
+                     input_shape=(width, height, 1),
+                     activation='relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Dropout(dropout_param))
     model.add(Conv2D(filters=32,
                      kernel_size=(2, 2),
@@ -55,12 +72,12 @@ def Train_CNN_Model(x_train, y_train, width, height):
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
     model.add(Dropout(dropout_param))
-    model.add(Dense(1024))
-    model.add(Activation('relu'))
-    model.add(Dropout(dropout_param))
-    model.add(Dense(512))
-    model.add(Activation('relu'))
-    model.add(Dropout(dropout_param))
+    # model.add(Dense(1024))
+    # model.add(Activation('relu'))
+    # model.add(Dropout(dropout_param))
+    # model.add(Dense(512))
+    # model.add(Activation('relu'))
+    # model.add(Dropout(dropout_param))
     model.add(Dense(256))
     model.add(Activation('relu'))
     model.add(Dropout(dropout_param))

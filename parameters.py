@@ -11,11 +11,11 @@ G_DataPath_Sub = "../data"
 G_ModelSave_Sub = "../model"
 
 G_DataTestFile = [
-    "test_modify.txt"
+    "test_input.txt"
 ]
 
 G_DataTrainFile = [
-    "train_modify.txt",
+    "train_input.txt",
     "output.txt"
 ]
 G_ForestData = [

@@ -13,6 +13,32 @@ from matplotlib import pyplot
 import numpy as np
 
 
+def tran_learn(data, label):
+    new_data = []
+    for i in range(len(data)):
+        if i < 4:
+            continue
+        new_data_piece = []
+        for j in range(5):
+            new_data_piece.append(data[i][j])
+        for j in range(3):
+            new_data_piece.append(data[i - j - 1][4])
+        new_data_piece.append((data[i][5] + data[i][6])/2)
+        new_data.append(np.array(new_data_piece))
+    return np.array(new_data), label[2:]
+
+
+def tran_validation(train, test):
+    new_test = []
+    for i in range(len(train)):
+        new_test.append(train[-1 - i])
+    for i in range(len(test)):
+        new_test.append(test[i])
+    labels = [_ for _ in range(10)]  # hahaha
+    new_test, labels = tran_learn(np.array(new_test), labels)
+    return new_test
+
+
 def load_train_data(file_path, forest=False):
     if forest:
         # @TODO load data preprocess in random forest
@@ -54,4 +80,9 @@ def load_train_data(file_path, forest=False):
 
 if __name__ == '__main__':
     path = parameters.G_DataPath
-    x_train, y_train, x_test = load_train_data(path, forest=True)
+    x_train, y_train, x_test = load_train_data(path, forest=False)
+    new_x_train, new_y_train = tran_learn(x_train, y_train)
+    new_x_test = tran_validation(x_train, x_test)
+    print("x_train.shape ->", new_x_train.shape)
+    print("y_train.shape ->", new_y_train.shape)
+    print("x_test.shape  ->", new_x_test.shape)
