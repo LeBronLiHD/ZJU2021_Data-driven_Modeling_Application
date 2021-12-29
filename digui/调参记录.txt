@@ -1,0 +1,13 @@
+步长50 batch_size = 32 val_loss: 9.4453e-04 score0.000962 模型的RMSE:0.031
+
+
+
+上面这个是默认
+步长75 val_loss: 0.0012 score0.001170 模型的RMSE:0.034
+步长50 batch_size = 64 val_loss: 9.4453e-04 score0.000962 模型不好
+加大cell到128+128 模型不好
+drop0.5 模型不好
+drop 0.1 8.9473e-04 模型的RMSE:0.03
+不要 dropout   模型获得了极大提升......RMSE:0.021 0.000457 val_loss: 4.5749e-04
+最优化 lr = 0.01  得分0.016
+然后就过拟合了
