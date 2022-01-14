@@ -18,17 +18,117 @@
 \providecommand*\HyPL@Entry[1]{}
 \bibstyle{apalike}
 \HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}引言}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}项目背景}{2}{subsection.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}问题描述}{2}{subsection.1.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces 脱丁烷塔和其他相连过程示意图\relax }}{2}{figure.caption.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces 脱丁烷塔示意图\relax }}{2}{figure.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3}数据集介绍}{3}{subsection.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}数据分析}{3}{section.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces 单个维度数据与最终输出的关系-1\relax }}{3}{figure.caption.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces 单个维度数据与最终输出的关系-2\relax }}{3}{figure.caption.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces 三个时刻21个维度与输出的相关关系\relax }}{4}{figure.caption.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces 三个时刻21个维度与输出的热力图\relax }}{4}{figure.caption.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}数据预处理}{4}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}特征合并}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}去除异常值}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}弥补缺失值}{5}{subsection.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces 训练集缺失值的单变量统计\relax }}{5}{figure.caption.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}简单补零}{5}{subsubsection.3.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces 补零后的7特征时序图\relax }}{5}{figure.caption.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}拉格朗日插值}{5}{subsubsection.3.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces 拉格朗日插值后的7特征时序图\relax }}{6}{figure.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.3}随机森林}{6}{subsubsection.3.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.4}转换为监督学习问题}{7}{subsubsection.3.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces 时序拓展后的7特征时序图\relax }}{7}{figure.caption.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}模型搭建}{7}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}最小二回归(OLS)}{7}{subsection.4.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \lstinline {OLS}处理结果\relax }}{9}{figure.caption.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces \lstinline {OLS}模型对验证集的拟合\relax }}{9}{figure.caption.12}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces \lstinline {OLS}模型对测试集的拟合\relax }}{9}{figure.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}偏最小二乘回归(PLS)}{9}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces \lstinline {PLS}数据预处理\relax }}{10}{figure.caption.14}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces \lstinline {PLS}自动估算最优参数\relax }}{11}{figure.caption.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces \lstinline {PLS}模型对验证集的拟合\relax }}{11}{figure.caption.16}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces \lstinline {PLS}模型对测试集的拟合\relax }}{11}{figure.caption.17}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}多元线性回归}{11}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}逻辑回归}{12}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}支持向量回归(SVR)}{13}{subsection.4.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces \lstinline {SVM}超平面原理图\relax }}{14}{figure.caption.18}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces 无法通过实现分类的数据\relax }}{14}{figure.caption.19}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces \lstinline {SVM}映射到更高维实现数据划分\relax }}{14}{figure.caption.20}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces \lstinline {SVR}基本原理\relax }}{14}{figure.caption.21}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces \lstinline {SVR}基本原理\relax }}{15}{figure.caption.22}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces \lstinline {SVR}对于验证集的拟合\relax }}{15}{figure.caption.23}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces \lstinline {SVR}对于测试集的拟合\relax }}{15}{figure.caption.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}随机森林}{15}{subsection.4.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces 随机森林对于验证集的拟合\relax }}{17}{figure.caption.25}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {26}{\ignorespaces 随机森林对于测试集的拟合\relax }}{18}{figure.caption.26}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {27}{\ignorespaces 随机森林对于验证集的拟合（调参后）\relax }}{18}{figure.caption.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}BP神经网络}{18}{subsection.4.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.1}算法介绍}{18}{subsubsection.4.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.2}模型搭建}{19}{subsubsection.4.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.7.3}改进方向}{19}{subsubsection.4.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}深度神经网络(DNN)}{19}{subsection.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.1}数据预处理}{19}{subsubsection.4.8.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {28}{\ignorespaces 形状为\lstinline {(42,42)}的模型输入数据\relax }}{19}{figure.caption.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.2}模型搭建}{20}{subsubsection.4.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.3}模型训练}{20}{subsubsection.4.8.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {29}{\ignorespaces \lstinline {DNN}迭代100次\lstinline {Loss}曲线\relax }}{20}{figure.caption.29}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {30}{\ignorespaces \lstinline {DNN}迭代50次\lstinline {Loss}曲线\relax }}{20}{figure.caption.30}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.8.4}模型评估}{20}{subsubsection.4.8.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {31}{\ignorespaces \lstinline {DNN}本地测试曲线\relax }}{21}{figure.caption.31}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.9}卷积神经网络(CNN)}{21}{subsection.4.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.9.1}数据预处理}{21}{subsubsection.4.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.9.2}模型搭建}{21}{subsubsection.4.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.9.3}模型训练}{21}{subsubsection.4.9.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {32}{\ignorespaces \lstinline {CNN}迭代100次\lstinline {Loss}曲线\relax }}{22}{figure.caption.32}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.9.4}模型评估}{22}{subsubsection.4.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.10}卷积自编码器(CAE)}{22}{subsection.4.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.10.1}设计初衷}{22}{subsubsection.4.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.10.2}模型搭建}{22}{subsubsection.4.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.10.3}模型分析}{22}{subsubsection.4.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.11}强化学习(RL)}{22}{subsection.4.11}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {33}{\ignorespaces 强化学习基本原理\relax }}{23}{figure.caption.33}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {34}{\ignorespaces 强化学习优化目标\relax }}{23}{figure.caption.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.12}循环神经网络(RNN)与LSTM}{23}{subsection.4.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.12.1}模型介绍}{23}{subsubsection.4.12.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {35}{\ignorespaces 神经网络基本结构\relax }}{23}{figure.caption.35}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {36}{\ignorespaces RNN基本结构\relax }}{24}{figure.caption.36}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {37}{\ignorespaces 常见的电路反馈回路\relax }}{24}{figure.caption.37}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {38}{\ignorespaces 反馈环节基本结构\relax }}{24}{figure.caption.38}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {39}{\ignorespaces RNN基本结构（展开）\relax }}{25}{figure.caption.39}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {40}{\ignorespaces 信息X和输出H离得很近\relax }}{25}{figure.caption.40}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {41}{\ignorespaces 信息X和输出H离得很远\relax }}{25}{figure.caption.41}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {42}{\ignorespaces 标准RNN只有一个tanh层\relax }}{26}{figure.caption.42}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {43}{\ignorespaces LSTM有复杂的4层\relax }}{26}{figure.caption.43}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {44}{\ignorespaces LSTM忘记门\relax }}{26}{figure.caption.44}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {45}{\ignorespaces LSTM输出门\relax }}{26}{figure.caption.45}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {46}{\ignorespaces LSTM忘记门与输出门一起工作\relax }}{26}{figure.caption.46}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.12.2}迭代LSTM}{27}{subsubsection.4.12.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {47}{\ignorespaces 自定义多层LSTM模型\relax }}{29}{figure.caption.47}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {48}{\ignorespaces LSTM模型训练\relax }}{30}{figure.caption.48}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {49}{\ignorespaces LSTM验证集拟合\relax }}{30}{figure.caption.49}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {50}{\ignorespaces LSTM测试集拟合\relax }}{31}{figure.caption.50}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {51}{\ignorespaces LSTM测试集拟合（处理前后对比）\relax }}{31}{figure.caption.51}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {52}{\ignorespaces 测试平台成绩（第一名）\relax }}{31}{figure.caption.52}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {53}{\ignorespaces 测试平台成绩记录\relax }}{31}{figure.caption.53}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}小组分工与感想}{31}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}分工}{31}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.1}王子非}{31}{subsubsection.5.1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.2}刘可佳}{31}{subsubsection.5.1.2}\protected@file@percent }
 \citation{*}
 \bibdata{books}
-\bibcite{tuantuan}{{1}{2018}{{Faghri et~al.}}{{}}}
-\bibcite{test}{{2}{2000}{{Pottie and Kaiser}}{{}}}
-\@writefile{toc}{\contentsline {section}{\numberline {1}引言}{2}{section.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {2}数据预处理}{2}{section.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3}模型搭建}{2}{section.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\lstinline {长短时记忆(LSTM)}}{2}{subsection.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}\lstinline {卷积神经网络(CNN)}}{2}{subsection.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}模型结果与分析}{2}{section.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {5}小组分工}{2}{section.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6}APPENDIX: Source Code}{2}{section.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {6.0.1}\lstinline {filename.py}}{2}{subsubsection.6.0.1}\protected@file@percent }
-\gdef \@abspage@last{2}
+\bibcite{cho2014learning}{{1}{2014}{{Cho et~al.}}{{}}}
+\bibcite{girshick2015fast}{{2}{2015}{{Girshick}}{{}}}
+\bibcite{he2017mask}{{3}{2017}{{He et~al.}}{{}}}
+\bibcite{iandola2016squeezenet}{{4}{2016}{{Iandola et~al.}}{{}}}
+\bibcite{xingjian2015convolutional}{{5}{2015}{{Xingjian et~al.}}{{}}}
+\bibcite{yu2019review}{{6}{2019}{{Yu et~al.}}{{}}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.1.3}李浩东}{32}{subsubsection.5.1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}感想}{32}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.1}王子非}{32}{subsubsection.5.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.2}刘可佳}{32}{subsubsection.5.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {5.2.3}李浩东}{32}{subsubsection.5.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}APPENDIX: Source Code}{32}{section.6}\protected@file@percent }
+\gdef \@abspage@last{33}

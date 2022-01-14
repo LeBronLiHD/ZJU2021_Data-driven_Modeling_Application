@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: elegantpaper-cn.aux
 The style file: apalike.bst
 Database file #1: books.bib
-You've used 2 entries,
+You've used 6 entries,
             1935 wiz_defined-function locations,
-            483 strings with 4100 characters,
-and the built_in function-call counts, 792 in all, are:
-= -- 70
-> -- 51
-< -- 1
-+ -- 18
-- -- 18
-* -- 67
-:= -- 154
-add.period$ -- 6
-call.type$ -- 2
-change.case$ -- 19
-chr.to.int$ -- 2
-cite$ -- 2
-duplicate$ -- 26
-empty$ -- 41
-format.name$ -- 22
-if$ -- 143
+            506 strings with 4986 characters,
+and the built_in function-call counts, 3163 in all, are:
+= -- 307
+> -- 157
+< -- 4
++ -- 58
+- -- 56
+* -- 256
+:= -- 520
+add.period$ -- 18
+call.type$ -- 6
+change.case$ -- 58
+chr.to.int$ -- 6
+cite$ -- 6
+duplicate$ -- 125
+empty$ -- 205
+format.name$ -- 62
+if$ -- 640
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 2
-newline$ -- 13
-num.names$ -- 6
-pop$ -- 16
+missing$ -- 6
+newline$ -- 33
+num.names$ -- 18
+pop$ -- 67
 preamble$ -- 1
-purify$ -- 19
+purify$ -- 58
 quote$ -- 0
-skip$ -- 23
+skip$ -- 101
 stack$ -- 0
-substring$ -- 24
-swap$ -- 2
-text.length$ -- 0
+substring$ -- 217
+swap$ -- 37
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 12
+type$ -- 36
 warning$ -- 0
-while$ -- 4
+while$ -- 23
 width$ -- 0
-write$ -- 27
+write$ -- 78

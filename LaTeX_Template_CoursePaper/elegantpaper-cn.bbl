@@ -1,15 +1,43 @@
 \begin{thebibliography}{}
 
-\bibitem[Faghri et~al., 2018]{tuantuan}
-Faghri, F., Hashemi, S.~H., Leonard, H., Scholz, S.~W., Campbell, R.~H., Nalls,
-  M.~A., and Singleton, A.~B. (2018).
-\newblock Predicting onset, progression, and clinical subtypes of parkinson
-  disease using machine learning.
-\newblock {\em bioRxiv}.
+\bibitem[Cho et~al., 2014]{cho2014learning}
+Cho, K., Van~Merri{\"e}nboer, B., Gulcehre, C., Bahdanau, D., Bougares, F.,
+  Schwenk, H., and Bengio, Y. (2014).
+\newblock Learning phrase representations using rnn encoder-decoder for
+  statistical machine translation.
+\newblock {\em arXiv preprint arXiv:1406.1078}.
 
-\bibitem[Pottie and Kaiser, 2000]{test}
-Pottie, G.~J. and Kaiser, W.~J. (2000).
-\newblock Embedding the internet: Wireless integrated network sensors.
-\newblock {\em Communications of the Acm}, 43.
+\bibitem[Girshick, 2015]{girshick2015fast}
+Girshick, R. (2015).
+\newblock Fast r-cnn.
+\newblock In {\em Proceedings of the IEEE international conference on computer
+  vision}, pages 1440--1448.
+
+\bibitem[He et~al., 2017]{he2017mask}
+He, K., Gkioxari, G., Doll{\'a}r, P., and Girshick, R. (2017).
+\newblock Mask r-cnn.
+\newblock In {\em Proceedings of the IEEE international conference on computer
+  vision}, pages 2961--2969.
+
+\bibitem[Iandola et~al., 2016]{iandola2016squeezenet}
+Iandola, F.~N., Han, S., Moskewicz, M.~W., Ashraf, K., Dally, W.~J., and
+  Keutzer, K. (2016).
+\newblock Squeezenet: Alexnet-level accuracy with 50x fewer parameters and< 0.5
+  mb model size.
+\newblock {\em arXiv preprint arXiv:1602.07360}.
+
+\bibitem[Xingjian et~al., 2015]{xingjian2015convolutional}
+Xingjian, S., Chen, Z., Wang, H., Yeung, D.-Y., Wong, W.-K., and Woo, W.-c.
+  (2015).
+\newblock Convolutional lstm network: A machine learning approach for
+  precipitation nowcasting.
+\newblock In {\em Advances in neural information processing systems}, pages
+  802--810.
+
+\bibitem[Yu et~al., 2019]{yu2019review}
+Yu, Y., Si, X., Hu, C., and Zhang, J. (2019).
+\newblock A review of recurrent neural networks: Lstm cells and network
+  architectures.
+\newblock {\em Neural computation}, 31(7):1235--1270.
 
 \end{thebibliography}
