@@ -2,6 +2,7 @@
 
 - ZJU2021_Data-driven_Modeling_Application_Course_Project
 - WANG Zifei (fgnb), LIU Kejia, LI Haodong
+- Course report: `./LaTeX_Template_CoursePaper/elegantpaper-cn.pdf`
 - Time Table:
 
 |Time Frame|Goal & Task|RMSE|
