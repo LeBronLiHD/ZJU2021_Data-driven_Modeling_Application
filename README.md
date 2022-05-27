@@ -16,8 +16,8 @@
 |Week 7|LSTM & SimpleRNN|0.13|
 |Week 8|LSTM & SimpleRNN|0.08|
 
-![Uploading HEAT.png…]()
+![HEAT](https://user-images.githubusercontent.com/67775090/170697927-f8412fc4-ef2b-4c25-b8f0-a57b10a810e8.png)
 
-![Uploading FGN.png…]()
+![FGN](https://user-images.githubusercontent.com/67775090/170697944-90cf0ed3-03f6-4b79-b03b-83625eaf3163.png)
 
-![Uploading FGNN.png…]()
+![FGNN](https://user-images.githubusercontent.com/67775090/170697955-9cabe72d-ab1f-44e2-af93-28cae1642c2f.png)
