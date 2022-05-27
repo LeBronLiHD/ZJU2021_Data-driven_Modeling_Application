@@ -15,5 +15,3 @@
 |Week 6|LSTM & SimpleRNN|0.19|
 |Week 7|LSTM & SimpleRNN|0.13|
 |Week 8|LSTM & SimpleRNN|0.08|
-
-[elegantpaper-cn.pdf](https://github.com/LeBronLiHD/ZJU2021_Data-driven_Modeling_Application/files/8785881/elegantpaper-cn.pdf)
