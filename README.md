@@ -15,3 +15,9 @@
 |Week 6|LSTM & SimpleRNN|0.19|
 |Week 7|LSTM & SimpleRNN|0.13|
 |Week 8|LSTM & SimpleRNN|0.08|
+
+![Uploading HEAT.png…]()
+
+![Uploading FGN.png…]()
+
+![Uploading FGNN.png…]()
